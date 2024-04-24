@@ -1,0 +1,22 @@
+def sort(a,left,right):
+    left1,right1,pivot=left,right,a[left]
+    while(left<right):
+        while((a[right]>=pivot)and(left<right)):
+            right-=1
+        if(left!=right):
+            a[left]=a[right]
+            left+=1
+        while((a[left]<=pivot)and(left<right)):
+                left+=1
+        if(left!=right):
+            a[right]=a[left]
+            right-=1
+    a[left],pivot,left,right=pivot,left,left1,right1
+    if(left<pivot):
+        sort(a,left,pivot-1)
+    if(right>pivot):
+        sort(a,pivot+1,right)
+a=[4,-2,1,-2,3]
+n=len(a)
+sort(a,0,n-1)
+print(a)
